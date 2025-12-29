@@ -1,0 +1,61 @@
+[
+    {
+        "test_name": "Fixed amount coupon only (Total 600 - 50 = 550)",
+        "products": [
+            { "product_name": "T-Shirt", "cost": 350, "units": 1, "item_category": "Clothing" },
+            { "product_name": "Hat", "cost": 250, "units": 1, "item_category": "Accessories" }
+        ],
+        "promos": [
+            { "type": "fixed_amount", "code": "FIX50", "amount": 50 }
+        ],
+        "final_expected_cost": 550
+    },
+    {
+        "test_name": "Percentage discount coupon only (Total 600 - 10% = 540)",
+        "products": [
+            { "product_name": "T-Shirt", "cost": 350, "units": 1, "item_category": "Clothing" },
+            { "product_name": "Hat", "cost": 250, "units": 1, "item_category": "Accessories" }
+        ],
+        "promos": [
+            { "type": "percentage_discount", "code": "P10", "percentage": 10 }
+        ],
+        "final_expected_cost": 540
+    },
+    {
+        "test_name": "Category percentage on-top discount (Total 2540 - 15% of 1050 = 2382.5)",
+        "products": [
+            { "product_name": "T-Shirt", "cost": 350, "units": 1, "item_category": "Clothing" },
+            { "product_name": "Hoodie", "cost": 700, "units": 1, "item_category": "Clothing" },
+            { "product_name": "Watch", "cost": 850, "units": 1, "item_category": "Accessories" },
+            { "product_name": "Bag", "cost": 640, "units": 1, "item_category": "Accessories" }
+        ],
+        "promos": [
+            { "type": "percentage_category_on_top", "code": "CLOTH15", "item_category": "Clothing", "percentage": 15 }
+        ],
+        "final_expected_cost": 2382.5
+    },
+    {
+        "test_name": "Point discount with 20 percent cap (Total 830. 20% cap = 166. Points = 68. Should use 68. Result 762)",
+        "products": [
+            { "product_name": "T-Shirt", "cost": 350, "units": 1, "item_category": "Clothing" },
+            { "product_name": "Hat", "cost": 250, "units": 1, "item_category": "Accessories" },
+            { "product_name": "Belt", "cost": 230, "units": 1, "item_category": "Accessories" }
+        ],
+        "promos": [
+            { "type": "point_discount_on_top", "code": "POINT68", "points": 68 }
+        ],
+        "final_expected_cost": 762
+    },
+    {
+        "test_name": "Seasonal discount only (Total 830. 40 THB/300 THB -> 2 times = 80 THB. Result 750)",
+        "products": [
+            { "product_name": "T-Shirt", "cost": 350, "units": 1, "item_category": "Clothing" },
+            { "product_name": "Hat", "cost": 250, "units": 1, "item_category": "Accessories" },
+            { "product_name": "Belt", "cost": 230, "units": 1, "item_category": "Accessories" }
+        ],
+        "promos": [
+            { "type": "seasonal", "code": "SEASON40", "every_amount": 300, "discount": 40 }
+        ],
+        "final_expected_cost": 750
+    }
+]
